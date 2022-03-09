@@ -4,7 +4,8 @@
   "description": "re-authenticate users to shield access to any route that requires a valid login to access.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test jest",
+    "start": "NODE_ENV=production node index.js"
   },
   "repository": {
     "type": "git",
