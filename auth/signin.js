@@ -4,7 +4,7 @@ const base64 = require("base-64");
 const bcrypt = require("bcrypt");
 const { users } = require("../src/models/index");
 
-async function signin(req, res, next) {
+ function signin(req, res, next) { // no need for async if i dont have await 
   if (req.headers.authorization) {
     // i need to make sure that i have the username:password inside the authorization header
     // 'basic hghgidjddoj'
