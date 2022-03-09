@@ -14,8 +14,13 @@ app.post("/signup", signup, (req, res) => {
   console.log("signed up successfully");
 });
 
-app.post("/signin", signin , (res, req) => {
-  console.log("signedin successfully");
+app.post("/signin", signin , (req, res) => {
+
+  res.status(200).send(
+    req.user
+  );
+
+
 });
 
 function start(PORT) {
