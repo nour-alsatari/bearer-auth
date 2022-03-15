@@ -43,15 +43,17 @@ const UserModel = (sequelize, DataTypes) => {
   };
 
   User.validateToken = async function (token) {
-    let verifiedToken = jwt.verify(token, SECRET); // this will return an object that has the username
-    console.log(verifiedToken);
-    const user = await this.findOne({
-      where: { username: verifiedToken.username },
-    });
-    if (user) {
-      return user;
-    } else {
-      throw new Error("invalid token");
+    try {
+      let verifiedToken = jwt.verify(token, SECRET); // this will return an object that has the username
+      console.log(verifiedToken);
+      const user = await this.findOne({
+        where: { username: verifiedToken.username },
+      });
+      if (user) {
+        return user;
+      }
+    } catch (error) {
+      throw new Error("not valid token");
     }
   };
 
